@@ -4,13 +4,15 @@
 
 .container {
   background: linear-gradient(-45deg, #6691e7 50%, #13c56d);
+  
   align-items: center;
   justify-content: center;
   /* width: 100vw; */
-  /* width: 100%; */
-  max-width: 100%; 
+  width: 100% !important;
+  max-width: 100% !important; 
 }
 .auth-bg-cover {
+  
   align-items: center;
   justify-content: center;
 
@@ -18,6 +20,7 @@
 }
 
 .auth-page-wrapper .auth-page-content {
+  
   position: relative;
   padding-bottom: 60px !important;
   z-index: 2;

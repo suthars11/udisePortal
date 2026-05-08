@@ -440,7 +440,9 @@ const ClientAdd = () => {
       <Sidebar/>
       <div className="page-content flex-grow-1 p-3 mt-3">
         <div className="row">
-          <div className="col-12"style={{ backgroundColor: "white" }}>
+          <div className="col-12"
+          // style={{ backgroundColor: "white" }}
+          >
             <div className="page-title-box d-sm-flex align-items-center justify-content-between">
               <h4 className="mb-sm-0">Clients</h4>
 
@@ -462,7 +464,7 @@ const ClientAdd = () => {
                 <div className="card-header">
                   <h4 className="card-title mb-0">Create New Client</h4>
                 </div>
-                <div className="card-body">
+                <div className="card-body mt-4">
                   <form onSubmit={createClient} className="form-steps" autoComplete="off">
                     <div id="custom-progress-bar" className="progress-nav mb-4">
                       <div className="progress" style={{ height: '1px' }}>
@@ -485,18 +487,18 @@ const ClientAdd = () => {
                     <div className="tab-content">
                       {/* Step 1: Personal Details */}
                       <div className={`tab-pane fade ${step === 1 ? 'show active' : ''}`}>
-                        <h5 className="mb-1">Personal Details</h5>
-                        <p className="text-muted">Fill all Information as below</p>
+                        <h5 className="mb-1 mx-4">Personal Details</h5>
+                        <p className="text-muted mx-4">Fill all Information as below</p>
                         <div className="row">
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-5 mb-3 mx-2">
                             <label htmlFor="clientName" className="form-label">Client Name</label>
                             <input type="text" className="form-control" id="clientName" name="clientName" placeholder="Client Name" value={formData.clientName} onChange={handleChange} required />
                           </div>
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-6 mb-3 mx-2">
                             <label htmlFor="email" className="form-label">Email</label>
                             <input type="email" className="form-control" id="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
                           </div>
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-5 mb-3 mx-2">
                             <label htmlFor="alternativeEmail" className="form-label">Alternative Email</label>
                             <input type="email" className="form-control" id="alternativeEmail" name="alternativeEmail" placeholder="Alternative Email" value={formData.alternativeEmail} onChange={handleChange} />
                           </div>
@@ -504,7 +506,7 @@ const ClientAdd = () => {
                             <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
                             <input type="tel" className="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleChange} required />
                           </div>
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-6 mb-3 mx-2">
                             <label htmlFor="contactPerson" className="form-label">Contact Person</label>
                             <input type="text" className="form-control" id="contactPerson" name="contactPerson" placeholder="Contact Person" value={formData.contactPerson} onChange={handleChange} required />
                           </div>
@@ -512,7 +514,7 @@ const ClientAdd = () => {
                         <div className="d-flex align-items-start gap-3 mt-4">
                           <button
                             type="button"
-                            className="btn btn-success btn-label right ms-auto"
+                            className="btn btn-success btn-label right ms-auto mb-3 mx-4"
                             onClick={() => setStep(2)}
                           >
                             <i className="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i> Go to more info
@@ -523,7 +525,7 @@ const ClientAdd = () => {
                       {/* Step 2: Additional Info */}
                       <div className={`tab-pane fade ${step === 2 ? 'show active' : ''}`}>
                         <div className="row">
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-5 mx-2 mb-3">
                             <label htmlFor="project" className="form-label">Select Project</label>
                             {/* Add project selection here */}
                           </div>
@@ -547,7 +549,7 @@ const ClientAdd = () => {
                           </div>
 
                           {/* Send SMS */}
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-5 mx-2 mb-3">
                             <label htmlFor="sendSMS" className="form-label">Send SMS</label>
                             <div className="d-flex">
                               <div className="form-check">
@@ -578,7 +580,7 @@ const ClientAdd = () => {
                         </div>
 
                         <div className="d-flex align-items-start gap-3 mt-4">
-                          <button type="button" className="btn btn-link text-decoration-none btn-label" onClick={() => setStep(1)}>
+                          <button type="button" className="btn btn-link text-decoration-none btn-label mx-4 mb-2" onClick={() => setStep(1)}>
                             <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to Personal Info
                           </button>
                           <button type="button" className="btn btn-success btn-label right ms-auto" onClick={() => setStep(3)}>
@@ -589,18 +591,18 @@ const ClientAdd = () => {
 
                       {/* Step 3: Address Details */}
                       <div className={`tab-pane fade ${step === 3 ? 'show active' : ''}`}>
-                        <h5 className="mb-1">Address Details</h5>
-                        <p className="text-muted">Fill all Information as below</p>
+                        <h5 className="mb-1 mx-4">Address Details</h5>
+                        <p className="text-muted mx-4">Fill all Information as below</p>
                         <div className="row">
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-5 mx-2 mb-3">
                             <label htmlFor="address1" className="form-label">Address 1</label>
                             <input type="text" className="form-control" id="address1" name="address1" placeholder="Address 1" value={formData.address1} onChange={handleChange} />
                           </div>
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-6 mb-3 mx-2">
                             <label htmlFor="address2" className="form-label">Address 2</label>
                             <input type="text" className="form-control" id="address2" name="address2" placeholder="Address 2" value={formData.address2} onChange={handleChange} />
                           </div>
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-5 mx-2 mb-3">
                             <label htmlFor="area" className="form-label">Area</label>
                             <input type="text" className="form-control" id="area" name="area" placeholder="Area" value={formData.area} onChange={handleChange} />
                           </div>
@@ -608,7 +610,7 @@ const ClientAdd = () => {
                             <label htmlFor="state" className="form-label">State</label>
                             <input type="text" className="form-control" id="state" name="state" placeholder="State" value={formData.state} onChange={handleChange} />
                           </div>
-                          <div className="col-lg-6 mb-3">
+                          <div className="col-lg-5 mx-2 mb-3">
                             <label htmlFor="city" className="form-label">City</label>
                             <input type="text" className="form-control" id="city" name="city" placeholder="City" value={formData.city} onChange={handleChange} />
                           </div>
@@ -621,7 +623,7 @@ const ClientAdd = () => {
                           <button type="button" className="btn btn-link text-decoration-none btn-label" onClick={() => setStep(2)}>
                             <i className="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to More Info
                           </button>
-                          <button type="submit" className="btn btn-success btn-label right ms-auto">
+                          <button type="submit" className="btn btn-success btn-label right ms-auto mb-2 mx-2">
                             <i className="ri-check-line label-icon align-middle fs-16 ms-2"></i> Submit
                           </button>
                         </div>

@@ -1,68 +1,26 @@
-// import React from "react";
-// import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+// App.jsx
 
-// import Dashboard from "./Pages/Dashboard";
-// import Projects from "./Pages/Projects";
-// import Leads from "./Pages/Leads";
-// import Users from "./Pages/Users";
-// import Client from "./Pages/Client";
-
-// import Navbar from "./components/Navbar/Navbar";
-// import Login from "./components/Login/Login";
-// import ProjectAdd from "./components/project/ProjectAdd";
-// import CreateLeads from "./components/create/CreateLeads";
-// import ClientAdd from "./components/client/ClientAdd";
-// import Footer from "./components/footer/Footer";
-
-// const App = () => {
-//   const location = useLocation();
-
-//   return (
-//     <div>
-//       {location.pathname !== "/" && <Navbar />}
-
-//       <Routes>
-//         <Route path="/" element={<Login />} />
-
-//         <Route path="/Dashboard" element={<Dashboard />} />
-//         <Route path="/Projects" element={<Projects />} />
-//         <Route path="/Leads" element={<Leads />} />
-//         <Route path="Client" element={<Client />} />
-//         <Route path="/Users" element={<Users />} />
-//         <Route path="/ProjectAdd" element={<ProjectAdd />} />
-//         <Route path="/CreateLeads" element={<CreateLeads />} />
-//         <Route path="/ClientAdd" element={<ClientAdd />} />
-//       </Routes>
-//     </div>
-//   );
-// };
-
-// const AppWrapper = () => (
-//   <BrowserRouter>
-// <Footer/>
-//     <App />
-//   </BrowserRouter>
-// );
-
-// export default AppWrapper;
-
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
+import { WebSocketProvider } from "./components/context/WebSocketProvider.jsx";
 
-import Dashboard from "./Pages/Dashboard";
-import Projects from "./Pages/Projects";
-import Leads from "./Pages/Leads";
-import Users from "./Pages/Users";
-import Client from "./Pages/Client";
-
-import Navbar from "./components/Navbar/Navbar";
-import Login from "./components/Login/Login";
-import ProjectAdd from "./components/project/ProjectAdd";
-import CreateLeads from "./components/create/CreateLeads";
-import ClientAdd from "./components/client/ClientAdd";
-import Footer from "./components/footer/Footer";
-
-import ProjectTitle from "./components/project/ProjectTitle";
+// Lazy load components
+const Dashboard = lazy(() => import("./Pages/Dashboard"));
+const Projects = lazy(() => import("./Pages/Projects"));
+const Leads = lazy(() => import("./Pages/Leads"));
+const Users = lazy(() => import("./Pages/Users"));
+const Client = lazy(() => import("./Pages/Client"));
+const ProjectAdd = lazy(() => import("./components/project/ProjectAdd"));
+const CreateLeads = lazy(() => import("./components/create/CreateLeads"));
+const ClientAdd = lazy(() => import("./components/client/ClientAdd"));
+const ProjectTitle = lazy(() => import("./components/project/ProjectTitle"));
+const Navbar = lazy(() => import("./components/Navbar/Navbar"));
+const Login = lazy(() => import("./components/Login/Login"));
+const Footer = lazy(() => import("./components/footer/Footer"));
+// const EventListener = lazy(() => import("./components/Dummy/EventListener.jsx"));
+const Upload = lazy(() => import("./components/Uploads/Upload.jsx"));
 
 const App = () => {
   const location = useLocation();
@@ -70,28 +28,34 @@ const App = () => {
   return (
     <div>
       {location.pathname !== "/" && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Projects" element={<Projects />} />
-        <Route path="/Leads" element={<Leads />} />
-        <Route path="/Client" element={<Client />} />
-        <Route path="/Users" element={<Users />} />
-        <Route path="/ProjectAdd" element={<ProjectAdd />} />
-        <Route path="/CreateLeads" element={<CreateLeads />} />
-        <Route path="/ClientAdd" element={<ClientAdd />} />
-        <Route path="/ProjectTitle/:id" element={<ProjectTitle />} />
-      </Routes>
-      {location.pathname !== "/" && <Footer />}{" "}
-      {/* Hide footer on login page */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/Upload" element={<Upload />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Projects" element={<Projects />} />
+          <Route path="/Leads" element={<Leads />} />
+          <Route path="/Client" element={<Client />} />
+          <Route path="/Users" element={<Users />} />
+          <Route path="/ProjectAdd" element={<ProjectAdd />} />
+          <Route path="/CreateLeads" element={<CreateLeads />} />
+          <Route path="/ClientAdd" element={<ClientAdd />} />
+          <Route path="/ProjectTitle/:id" element={<ProjectTitle />} />
+        </Routes>
+      </Suspense>
+      {location.pathname !== "/" && <Footer />}
     </div>
   );
 };
 
 const AppWrapper = () => (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+     <WebSocketProvider>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </WebSocketProvider>
+   </Provider>
 );
 
 export default AppWrapper;

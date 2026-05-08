@@ -15,6 +15,9 @@ import { Link } from "react-router-dom";
 import { useAppStore } from "../../appStore";
 import { useNavigate } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
+import { useSelector } from 'react-redux';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+
 
 const drawerWidth = 240;
 
@@ -72,6 +75,7 @@ export default function Sidebar() {
   const handleDrawerToggle = () => {
     updateOpen(!dopen);
   };
+  const role = useSelector((state) => state.user.role);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -167,39 +171,7 @@ export default function Sidebar() {
             </ListItemButton>
           </ListItem>
 
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              component={Link}
-              to="/Leads"
-              sx={{
-                minHeight: 48,
-                justifyContent: dopen ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "white",
-                  color: "blue",
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: dopen ? 3 : "auto",
-                  justifyContent: "center",
-                  color: "inherit",
-                }}
-              >
-                <i className="ri-pulse-line" style={{ fontSize: 32 }}></i>
-              </ListItemIcon>
-              <ListItemText
-                primary="Leads"
-                sx={{ opacity: dopen ? 1 : 0 }}
-                primaryTypographyProps={{ fontSize: "1.4rem" }}
-              />
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem disablePadding sx={{ display: "block" }}>
+          <ListItem disablePadding sx={{ display: role=="CLIENT" ?"block":"none" }}>
             <ListItemButton
               component={Link}
               to="/Users"
@@ -230,7 +202,7 @@ export default function Sidebar() {
               />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding sx={{ display: "block" }}>
+          <ListItem disablePadding sx={{ display: role=="ADMIN" ?"block":"none" }}>
             <ListItemButton
               component={Link}
               to="/Client"

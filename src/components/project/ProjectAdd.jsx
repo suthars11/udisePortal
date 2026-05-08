@@ -133,14 +133,14 @@ function ProjectAdd() {
                           step === 1 ? "show active" : ""
                         }`}
                       >
-                        <div className="mb-4">
-                          <h5 className="mb-1">General Information</h5>
+                        <div className="mb-4 mx-2">
+                          <h5 className="mb-1 ">General Information</h5>
                           <p className="text-muted">
                             Fill all Information as below
                           </p>
                         </div>
-                        <div className="row mb-3">
-                          <div className="col">
+                        <div className="row mb-3 col-lg-12">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Project Name
                             </label>
@@ -155,7 +155,7 @@ function ProjectAdd() {
                               maxLength="30"
                             />
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Start Date
                             </label>
@@ -167,7 +167,7 @@ function ProjectAdd() {
                               onChange={handleInputChange}
                             />
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               End Date
                             </label>
@@ -180,8 +180,8 @@ function ProjectAdd() {
                             />
                           </div>
                         </div>
-                        <div className="row mt-4">
-                          <div className="col">
+                        <div className="row mt-4 col-lg-12">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Turn Around Time (/Hour)
                             </label>
@@ -194,7 +194,7 @@ function ProjectAdd() {
                               placeholder="Turn around time"
                             />
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Cost Per Lead (Excluding GST)
                             </label>
@@ -207,7 +207,7 @@ function ProjectAdd() {
                               placeholder="Cost per lead"
                             />
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Total Leads To be Delivered
                             </label>
@@ -221,7 +221,7 @@ function ProjectAdd() {
                             />
                           </div>
                         </div>
-                        <div className="d-flex align-items-start gap-3 mt-4">
+                        <div className="d-flex align-items-start gap-3 mt-2">
                           <button
                             type="button"
                             className="btn btn-success btn-label right ms-auto"
@@ -237,8 +237,8 @@ function ProjectAdd() {
                           step === 2 ? "show active" : ""
                         }`}
                       >
-                        <div className="row mt-4">
-                          <div className="col">
+                        <div className="row mt-4 col-lg-12">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Price Start From
                             </label>
@@ -251,7 +251,7 @@ function ProjectAdd() {
                               placeholder="Price From"
                             />
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Project Type
                             </label>
@@ -266,7 +266,7 @@ function ProjectAdd() {
                               <option value="type2">Type 2</option>
                             </select>
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Select Products
                             </label>
@@ -281,8 +281,8 @@ function ProjectAdd() {
                             </select>
                           </div>
                         </div>
-                        <div className="row mt-4">
-                          <div className="col">
+                        <div className="row mt-4 col-lg-12">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               Landing Page URL
                             </label>
@@ -295,7 +295,7 @@ function ProjectAdd() {
                               placeholder="Landing Page URL"
                             />
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               State
                             </label>
@@ -310,7 +310,7 @@ function ProjectAdd() {
                               <option value="state2">State 2</option>
                             </select>
                           </div>
-                          <div className="col">
+                          <div className="col-lg-4">
                             <label className="form-label mandatory ps-2">
                               City
                             </label>
@@ -331,7 +331,7 @@ function ProjectAdd() {
                             type="button"
                             className="btn btn-light btn-label right ms-auto"
                             onClick={() => handleNextStep(1)}
-                          >
+                        >
                             <i className="ri-arrow-left-line label-icon align-middle fs-16 ms-2"></i>
                             Previous
                           </button>

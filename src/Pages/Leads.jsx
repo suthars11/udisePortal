@@ -306,64 +306,7 @@ function Leads() {
                 </div>
               ))}
             </div>
-            <div className="row g-0 text-center text-sm-start align-items-center mb-4">
-              <div className="col-sm-6">
-                <p className="mb-sm-0 text-muted">
-                  Showing{" "}
-                  <span className="fw-semibold">
-                    {(currentPage - 1) * 10 + 1}
-                  </span>{" "}
-                  to{" "}
-                  <span className="fw-semibold">
-                    {Math.min(currentPage * 10, totalDocuments)}
-                  </span>{" "}
-                  of{" "}
-                  <span className="fw-semibold text-decoration-underline">
-                    {totalDocuments}
-                  </span>{" "}
-                  entries
-                </p>
-              </div>
-              {/* <d className="col-sm-6">
-                <ul className="pagination pagination-separated justify-content-center justify-content-sm-end mb-sm-0">
-                  <li className="page-item disabled">
-                    <button
-                      onClick={() => getPageData(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      className="page-link"
-                    >
-                      Previous
-                    </button>
-                  </li>
-                  {[...Array(Math.ceil(totalDocuments / 10))].map(
-                    (_, index) => (
-                      <li
-                        key={index}
-                        className={`page-item ${
-                          index + 1 === currentPage ? "active" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={() => getPageData(index + 1)}
-                        >
-                          {index + 1}
-                        </button>
-                      </li>
-                    )
-                  )}
-                  <li className="page-item">
-                    <button
-                      onClick={() => getPageData(currentPage + 1)}
-                      disabled={currentPage >= Math.ceil(totalDocuments / 10)}
-                      className="page-link"
-                    >
-                      Next
-                    </button>
-                  </li>
-                </ul>
-              </d> */}
-            </div>
+            
           </div>
         </div>
         <div

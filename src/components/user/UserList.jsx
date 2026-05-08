@@ -1,34 +1,32 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "remixicon/fonts/remixicon.css";
 import "./UserList.css";
 
 export default function UserList() {
   const [userList, setUserList] = useState([]);
+  const id = useSelector((state) => state.user.userId);
+  const token = useSelector((state) => state.user.token);
+  const jobId = useSelector((state) => state.user.jobId);
+  const dispatch = useDispatch();
 
   const fetchUserList = async () => {
+    const url = `http://192.168.1.20:8080/v1/user/${id}/getUsers`;
     try {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mbyI6eyJlbWFpbCI6InBvcnRhbGFkbWluQGxtcy5jb20iLCJ1c2VySWQiOiI2NjY2Yjc3NjU3ZTM0YWIyYjAwZTRiN2UiLCJyb2xlIjoiUE9SVEFMX0FETUlOIn0sImV4cGlyZXNJbiI6IjFoIiwiaWF0IjoxNzI2MTU3MjA3fQ.tJvtSI3D_jBLzFk_Aw9wP3-69F0p9ujjtwA6OgbOgo4";
-      if (token) {
-        const payload = {
-          limit: 1000,
-          page: 1,
-        };
-        const response = await axios.post(
-          "https://lmsapi.propdoors.com:3000/user/list",
-          payload,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        const data = response.data.users;
-        console.log("this is my User data:", data);
-        setUserList(data);
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`, // Use token from Redux store for authorization
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to upload");
       }
+      const data = await response.json();
+      console.log("this is my User data:", data);
+      setUserList(data);
     } catch (error) {
       console.error("Something went wrong", error);
     }
@@ -49,7 +47,7 @@ export default function UserList() {
   return (
     <div className="row mb-5">
       {userList.map((user) => (
-        <div key={user._id} className="col-lg-6 col-md-6 col-sm-12 mb-4">
+        <div key={user.id} className="col-lg-6 col-md-6 col-sm-12 mb-4">
           <div className="card ribbon-box right overflow-hidden">
             <div className="card-body text-center p-4">
               <div
@@ -63,17 +61,15 @@ export default function UserList() {
                 </span>
               </div>
               <h5 className="mb-1 mt-4">
-                <a className="link-primary">
-                  {user.firstName} {user.lastName || ""}
-                </a>
+                <a className="link-primary">{user.fullName}</a>
               </h5>
               <p className="text-muted">{user.email}</p>
-              <p className="text-muted">{user.contactNumber}</p>
+              <p className="text-muted">{user.mobile}</p>
               <div className="row mt-4">
                 <div className="col">
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => deleteUser(user._id)}
+                    onClick={() => deleteUser(user.id)}
                   >
                     <i className="ri-delete-bin-2-line"></i>
                   </button>

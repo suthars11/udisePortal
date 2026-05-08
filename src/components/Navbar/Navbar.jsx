@@ -311,6 +311,7 @@ export default function Navbar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const isNotificationOpen = Boolean(notificationAnchorEl);
 
+
   const handleDrawerToggle = () => {
     updateOpen(!dopen);
   };
@@ -335,6 +336,7 @@ export default function Navbar() {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
+
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
@@ -363,11 +365,7 @@ export default function Navbar() {
         },
       }}
     >
-      <MenuItem disabled sx={{ mt: -1 }}>
-        <h3>Welcome Suthar</h3>
-      </MenuItem>
-
-      <MenuItem onClick={handleMenuClose} sx={{ mt: -1 }}>
+      <MenuItem onClick={handleMenuClose} sx={{ mt:  -1}}>
         <ListItemIcon>
           <LogoutIcon fontSize="small" />
         </ListItemIcon>

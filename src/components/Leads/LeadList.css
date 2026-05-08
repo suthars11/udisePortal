@@ -1,12 +1,6 @@
-
-/* .card {
-  margin: 0;
-  padding: 0; 
-} */
-
 .col-md-4 {
-  padding: 0; 
-
+  padding: 0;
+}
 
 .card-body h6 {
   text-decoration: none !important ;
@@ -46,18 +40,7 @@
   color: #878a99 !important;
 }
 .card-body {
-    flex: 1 1 auto;
-    padding: var(--vz-card-spacer-y) var(--vz-card-spacer-x);
-    color: var(--vz-card-color);
+  flex: 1 1 auto;
+  padding: var(--vz-card-spacer-y) var(--vz-card-spacer-x);
+  color: var(--vz-card-color);
 }
-
-/* button, a {
-    outline: none !important;
-    position: relative;
-    text-decoration: none;
-} */
-}
-/* a {
-    color: var(--vz-link-color);
-    text-decoration: none;
-} */
